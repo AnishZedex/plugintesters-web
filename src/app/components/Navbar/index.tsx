@@ -76,19 +76,22 @@ const Navbar = () => {
             <button className='mt-4'><ChevronRightIcon/></button>
           </div>
           </ul>
-          <div className='header-socials '>
-            <p className='text text-center'>Follow Us</p>
-            <div className='flex gap-2 mt-5 ml-10'>
-            <SketchLogoIcon className='h-7 w-7 text'/>
+          <div className="py-7 pr-4 pl-6">
+            <p className='text text-center mb-5'>Follow Us</p>
+            <div className='flex flex-wrap mb-4 justify-around mx-auto'>
+            {/* <div className='flex gap-2 mt-5 ml-10'> */}
+            <a href="/" className='items-center justify-center'><SketchLogoIcon className='h-7 w-7 text'/></a>
             <TwitterLogoIcon className='h-7 w-7 text'/>
             <LinkedInLogoIcon className='h-7 w-7 text'/>
             <GitHubLogoIcon className='h-7 w-7 text'/>
+            </div>
+            <div className='flex flex-wrap justify-around mx-auto'>
             <InstagramLogoIcon className='h-7 w-7 text'/>
             <VercelLogoIcon className='h-7 w-7 text'/>
             <DiscordLogoIcon className='h-7 w-7 text'/>
             <HomeIcon className='h-7 w-7 text'/>
             </div>
-        </div>
+          </div>
         </div>)}
       </div>
     </nav>

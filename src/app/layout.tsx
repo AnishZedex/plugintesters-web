@@ -1,4 +1,6 @@
 import FooterCopywrite from './components/Footer'
+import Footer from './components/Footer/bigfooter'
+import Footerpress from './components/Footer/footerpress'
 import Navbar from './components/Navbar'
 import './globals.css'
 import { Inter } from 'next/font/google'
@@ -20,8 +22,10 @@ export default function RootLayout({
       <body className={inter.className}>
       <Navbar />
         {children}
+      {/* <Footerpress/> */}
+      <Footer/>
       <FooterCopywrite/>
-        </body>
+      </body>
     </html>
   )
 }
