@@ -2,6 +2,10 @@ import Blogs from "./components/Blogs"
 import Card from "./components/Card"
 import FooterCopywrite from "./components/Footer"
 import Footer from "./components/Footer"
+import Footersocial from "./components/Footer/footersocial"
+import Newsletter from "./components/Footer/Newsletter"
+
+
 import Guide from "./components/Guide"
 import Navbar from "./components/Navbar"
 import OrangeRibbon from "./components/OrangeRibbon"
@@ -20,8 +24,8 @@ export default function Home() {
           <Card/>
           <Guide/>
         </div>
-        {/* <Footerpress/> */}
-      <Footer/>
+        <Footersocial/>
+        <Newsletter/>
       <FooterCopywrite/>
     </main>
   )
