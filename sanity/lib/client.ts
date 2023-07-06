@@ -8,3 +8,7 @@ export const client = createClient({
   projectId,
   useCdn,
 })
+
+import { cache } from 'react'
+
+export const cachedClient = cache(client.fetch.bind(client))

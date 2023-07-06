@@ -58,8 +58,8 @@ const Guide = () => {
         <p className="text-3">Useful</p>
         <p className="text-gray-600">WordPress Guides</p>
       </div>
-      <div className="relative">
-        <div className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-6 overflow-x-auto">
+      <div className="relative duration-1000">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-6 overflow-x-auto ">
           {guidetitles[activeSlide].map((g, i) => (
             <div key={i} className="flex gap-2 text-gray-600">
               <ArrowRightIcon className="w-7 h-7 pb-2" />

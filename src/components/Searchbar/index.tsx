@@ -10,7 +10,7 @@ const Searchbar = () => {
         <input
           type="search"
           placeholder="Enter your keywords and search WPBeginner..."
-          className="rounded-lg shadow-md border-gray-800 py-6 pr-3 pl-16 w-[100%] md:w-full lg:pr-20 lg:pl-60 lg:w-full"
+          className="rounded-lg shadow-md border-gray-800 py-6 pr-3 pl-16 w-[100%] md:w-full lg:pr-20 lg:pl-60 lg:w-full  focus:outline-3"
         />
         <button className=" hidden md:block absolute top-4 right-3 py-2 px-3 text font-semibold text-lg bg-3 hover:bg-orange-800">Search</button>
       </div>

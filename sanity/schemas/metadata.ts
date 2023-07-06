@@ -1,9 +1,9 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'category',
-  title: 'Category',
-  type: 'document',
+  name: 'metadata',
+  title: 'Metadata',
+  type: 'object',
   fields: [
     defineField({
       name: 'title',
@@ -16,13 +16,11 @@ export default defineType({
       type: 'text',
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
+      name: 'canonicalurl',
+      title: 'Canonical Url',
+      type: 'url',
     }),
   ],
 })
+
+

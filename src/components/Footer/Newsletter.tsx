@@ -10,7 +10,7 @@ import {
 const Newsletter = () => {
   return (
     <div className="bg-[#2D2520] px-20 pb-20 w-full">
-      <div className="text-[#9D8C81] mx-40">
+      <div className="text-[#9D8C81] lg:mx-40">
         <div className="flex flex-col lg:flex-row text-lg gap-8 py-10 ">
           <div className="text font-sans font-extrabold">About WPBeginner<sup>®</sup></div>
         </div>
