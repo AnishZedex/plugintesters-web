@@ -32,3 +32,9 @@ export const categoriesPathQuery = groq`*[_type=="category" && defined(slug.curr
 export const categoryQuery = groq`*[_type=="category" && slug.current == $slug][0]{
   _id, title, slug
 }`
+
+
+//get all posts of a single category
+export const blogByCategory = groq`*[_type=='post'&& references(*[_type=="category" && slug.current==$slug]._id)]{
+  _id,title,body,mainImage,slug
+}`
