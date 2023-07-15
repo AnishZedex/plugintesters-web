@@ -1,10 +1,7 @@
-
-import { cachedClient, client } from "../../sanity/lib/client"
-import { postsQuery } from "../../queries"
+import { cachedClient } from "../../sanity/lib/client"
+import { PluginBlogs, TutorialBlogs, catergoriesQuery, postsQuery } from "../../queries"
 import Navbar from "@/components/Navbar"
-import OrangeRibbon from "@/components/OrangeRibbon"
 import Searchbar from "@/components/Searchbar"
-import SearchPillar from "@/components/SearchPillar"
 import Blogs from "@/components/Blogs"
 import Card from "@/components/Card"
 import Guide from "@/components/Guide"
@@ -15,15 +12,16 @@ import FooterCopywrite from "@/components/Footer"
 
 export default async function Home() {
   const posts = await cachedClient(postsQuery)
+  const PluginCategory = await cachedClient(PluginBlogs)
+  const categories = await cachedClient(catergoriesQuery)
+  // const TutorialCategory = await cachedClient(TutorialBlogs)
   return (
     <>
-      <Navbar />
-        <OrangeRibbon />
-        <div className="container mx-auto px-6 lg:px-52">
+      <Navbar category={categories} PlugCategory={PluginCategory}/>
+        <div className="container mx-auto px-6 xl:px-52">
           <Searchbar/>
-          <SearchPillar/>
-          <Blogs posts={posts}/>
-          <Card/>
+          <Blogs posts={posts} category={categories}/>
+          <Card PluginCategory={PluginCategory}/>
           <Guide/>
         </div>
         <Footersocial/>

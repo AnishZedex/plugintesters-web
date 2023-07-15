@@ -4,7 +4,7 @@ import React from "react";
 const Searchbar = () => {
   return (
     <>
-      <div className="relative">
+      <div className="relative mt-8">
         <h1 className="hidden lg:block absolute mx-8 my-6 font-semibold text-gray-500">I need help with...</h1>
         <MagnifyingGlassIcon className="absolute text-gray-500 mx-8 my-6 w-5 h-5 lg:w-7 lg:h-7 lg:mx-52" /> 
         <input

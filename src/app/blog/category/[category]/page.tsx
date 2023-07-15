@@ -1,5 +1,5 @@
 import { SanityDocument } from "@sanity/client";
-import { categoriesPathQuery, categoryQuery, postPathsQuery, postQuery } from "../../../../../queries";
+import { PluginBlogs, blogByCategory, categoriesPathQuery, categoryQuery, catergoriesQuery, postPathsQuery, postQuery } from "../../../../../queries";
 import Navbar from "../../../../components/Navbar"
 import Category from "../../../Category"
 import FooterCopywrite from "../../../../components/Footer";
@@ -15,13 +15,15 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: any }) {
-  const category = await cachedClient<SanityDocument>(categoryQuery,{slug:params.category} );
+  const categories = await cachedClient(catergoriesQuery)
+  const PluginCategory = await cachedClient(PluginBlogs)
+  const blogs = await cachedClient<SanityDocument[]>(blogByCategory,{slug:params.category})
+  
   return(
     <>
-      <Navbar />
-      <OrangeRibbon/>
+      <Navbar category={categories} PlugCategory={PluginCategory}/>
       <div className="container mx-auto px-6 lg:px-52">
-      <Category category={category} />
+      <Category blogs={blogs}/>
       </div>
       <Footersocial/>
       <Newsletter/>
