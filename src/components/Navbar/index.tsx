@@ -135,9 +135,9 @@ function Navbar({
           </div>
         </div>
         <div className="py-3 pr-4 flex gap-4 lg:hidden">
-          <button className="">
+          {/* <button className="">
             <MagnifyingGlassIcon className="w-6 h-6 text" />
-          </button>
+          </button> */}
           {!isOpen ? (
             <button className="Hamburger Menu" onClick={navOpen}>
               <HamburgerMenuIcon className="w-6 h-6 text" />
