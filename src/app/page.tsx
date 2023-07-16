@@ -22,7 +22,7 @@ export default async function Home() {
           <Searchbar/>
           <Blogs posts={posts} category={categories}/>
           <Card PluginCategory={PluginCategory}/>
-          <Guide/>
+          <Guide posts={posts}/>
         </div>
         <Footersocial/>
         <Newsletter/>

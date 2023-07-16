@@ -57,13 +57,13 @@ const Searchbar = () => {
         </form>
       </div>
       <div className="bg-white text-black rounded-lg shadow-md">
-        {searchResults.map((result) => (
+        {searchResults.map((post) => (
           <ul
-            key={result._id}
+            key={post._id}
             className="p-4 border-b"
           >
-            <Link href={`/blog/${result.slug.current}`}>
-              <li>{result.title}</li>
+            <Link href={`/blog/${post.slug.current}`}>
+              <li>{post.title}</li>
             </Link>
           </ul>
         ))}

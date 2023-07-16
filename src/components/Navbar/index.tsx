@@ -80,7 +80,7 @@ function Navbar({
                 {category.map((category) => (
                   <li
                     key={category._id}
-                    className="flex items-center text-black p-3"
+                    className="flex items-center text-black font-medium p-3"
                   >
                     <Link href={`/blog/category/${category.slug.current}`}>
                       {category.title}
@@ -106,7 +106,7 @@ function Navbar({
                 </li>
                 {PlugCategory.map((post) => (
                   <div key={post._id}>
-                    <li className="flex items-center text-black p-3">
+                    <li className="flex items-center text-black font-medium p-3">
                       <Link href={`/blog/${post.slug.current}`}>
                         {post.title.split(" ").slice(0, 1).join(" ")}
                       </Link>
