@@ -151,24 +151,30 @@ function Navbar({
         {isOpen && (
           <div className="fixed bg-2 top-14 z-10 left-0 h-full w-[100%] lg:hidden">
             <ul className="text p-8 flex flex-col gap-4 font-thin divide-y divide-gray-700">
+                <Link href={`/`}>
               <div className="flex justify-between">
                 <li className="text-lg font-bold">Blogs</li>
                 <button>
                   <ChevronRightIcon />
                 </button>
               </div>
+                </Link>
+                <Link href={`/blog/category/plugins`}>
               <div className="flex justify-between">
                 <li className="text-lg font-bold mt-4">Plugins</li>
                 <button className="mt-4">
                   <ChevronRightIcon />
                 </button>
               </div>
+                </Link>
+                <Link href={`/contact`}>
               <div className="flex justify-between">
                 <li className="text-lg font-bold mt-4">Contact Us</li>
                 <button className="mt-4">
                   <ChevronRightIcon />
                 </button>
               </div>
+                </Link>
             </ul>
             <div className="py-7 pr-4 pl-6">
               <p className="text text-center mb-5">Follow Us</p>
