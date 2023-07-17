@@ -57,9 +57,13 @@ export default function Post({category = [],post,}: {category: SanityDocument[];
       </div>
       <div className="lg:flex lg:flex-col">
         <SocialWidget />
-        <div className="mb-4 bg-white lg:mb-4 cursor-pointer">
+        <div className="mb-4 lg:mb-4 cursor-pointer flex justify-center items-center">
           <a href="/">
-            <Image src={lazyImage} alt="image" className="object-fill" />
+            <Image
+              src={lazyImage}
+              alt="image"
+              className="object-contain h-[300px] w-[300px]"
+            />
           </a>
         </div>
         <div className="container mx-auto">

@@ -12,6 +12,7 @@ import {
   DiscordLogoIcon,
   TwitterLogoIcon,
   SketchLogoIcon,
+  ChevronDownIcon,
 } from "@radix-ui/react-icons";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { CaretDownIcon } from "@radix-ui/react-icons";
@@ -29,6 +30,16 @@ function Navbar({
   const [isOpen, setIsOpen] = useState(false);
   const navOpen = () => {
     setIsOpen(!isOpen);
+  };
+
+  const [isCategory, setIsCategory] = useState(false);
+  const catOpen = () => {
+    setIsCategory(!isCategory);
+  };
+
+  const [isPlugin, setIsPlugin] = useState(false);
+  const plugOpen = () => {
+    setIsPlugin(!isPlugin);
   };
 
   useEffect(() => {
@@ -150,36 +161,62 @@ function Navbar({
         </div>
         {isOpen && (
           <div className="fixed bg-2 top-14 z-10 left-0 h-full w-[100%] lg:hidden">
-            <ul className="text p-8 flex flex-col gap-4 font-thin divide-y divide-gray-700">
-                <Link href={`/`}>
-              <div className="flex justify-between">
-                <li className="text-lg font-bold">Blogs</li>
-                <button>
-                  <ChevronRightIcon />
-                </button>
-              </div>
-                </Link>
-                <Link href={`/blog/category/plugins`}>
-              <div className="flex justify-between">
-                <li className="text-lg font-bold mt-4">Plugins</li>
-                <button className="mt-4">
-                  <ChevronRightIcon />
-                </button>
-              </div>
-                </Link>
-                <Link href={`/contact`}>
-              <div className="flex justify-between">
-                <li className="text-lg font-bold mt-4">Contact Us</li>
-                <button className="mt-4">
-                  <ChevronRightIcon />
-                </button>
-              </div>
-                </Link>
+            <ul className="text p-8 flex flex-col gap-6 font-thin">
+              <li className="text-lg font-bold flex justify-between items-center">
+                <button onClick={catOpen}>Blogs</button>
+                {!isCategory ? (
+                  <button onClick={catOpen}>
+                    <ChevronRightIcon />
+                  </button>
+                ) : (
+                  <button onClick={catOpen}>
+                    <ChevronDownIcon />
+                  </button>
+                )}
+              </li>
+              {isCategory && (
+                <ul className="font-medium list-disc pl-4">
+                {category.map((category) => (
+                  <li key={category._id} className="pb-2">
+                    <Link href={`/blog/category/${category.slug.current}`}>
+                      {category.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              )}
+              <li className="text-lg font-bold flex justify-between items-center">
+                <button onClick={plugOpen}>Plugins</button>
+                {!isPlugin ? (
+                  <button onClick={plugOpen}>
+                    <ChevronRightIcon />
+                  </button>
+                ) : (
+                  <button onClick={plugOpen}>
+                    <ChevronDownIcon />
+                  </button>
+                )}
+              </li>
+              {isPlugin && (
+                <ul className="font-medium list-disc pl-4">
+                {PlugCategory.map((post) => (
+                  <li key={post._id} className="pb-2">
+                    <Link href={`/blog/${post.slug.current}`}>
+                      {post.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              )}
+              <Link href={`/contact`}>
+                <div className="flex justify-between">
+                  <li className="text-lg font-bold">Contact Us</li>
+                </div>
+              </Link>
             </ul>
-            <div className="py-7 pr-4 pl-6">
+            <div className="py-10 pr-4 pl-6">
               <p className="text text-center mb-5">Follow Us</p>
               <div className="flex flex-wrap mb-4 justify-around mx-auto">
-                {/* <div className='flex gap-2 mt-5 ml-10'> */}
                 <a href="/" className="items-center justify-center">
                   <SketchLogoIcon className="h-7 w-7 text" />
                 </a>
