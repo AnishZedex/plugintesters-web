@@ -14,7 +14,7 @@ const Searchbar = () => {
     try {
       // Perform search logic using the searchQuery state
       const response = await cachedClient(
-        `*[_type == "post" && (title match $query || content match $query)]`,
+        `*[_type == "post" && (title match $query || categories[]->title match $query || tags[]->label match $query)]`,
         { query: searchQuery }
       );
       setSearchResults(response);

@@ -13,7 +13,7 @@ const builder = imageUrlBuilder(client);
 function Blogs({category = [],posts = [],}: {category: SanityDocument[];posts: SanityDocument[];}) {
   return (
     <div className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
-      <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12 xl:px-14">
+      <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12">
         <p className="text-gray-500 font-semibold uppercase mb-2 text-sm">
           new on blog
         </p>
@@ -94,7 +94,7 @@ function Blogs({category = [],posts = [],}: {category: SanityDocument[];posts: S
                         <h4 className="text-gray-500  hover:text-primary-3">
                           {category.title}
                         </h4>
-                        <p className="text-primary-3 text-xs">24</p>
+                        <p className="text-primary-3 text-xs">{category.numberOfBlogs}</p>
                       </li>
                     </Link>
                   );

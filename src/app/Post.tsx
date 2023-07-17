@@ -3,7 +3,6 @@ import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "@sanity/client";
 import { PortableText } from "@portabletext/react";
-import { client } from "../../sanity/lib/client";
 import lazyImage from "../../public/images/startablog.png";
 import SocialWidget from "@/components/SocialWidget";
 import Link from "next/link";
@@ -11,6 +10,7 @@ import Link from "next/link";
 // const builder = imageUrlBuilder(client);
 
 export default function Post({category = [],post,}: {category: SanityDocument[];post: SanityDocument;}) {
+  // console.log(post.tag)
   return (
     <main className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
       <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12 lg:">
@@ -20,13 +20,13 @@ export default function Post({category = [],post,}: {category: SanityDocument[];
         <h1 className="font-bold text-gray-700 text-2xl mb-6">{post.title}</h1>
         <div className="font-semibold text-gray-700 text-base mb-6">
           <p>by {post.author}</p>
-          <p>{new Date(post.publishedAt).toLocaleDateString(
-            "en-US",{
+          <p>
+            {new Date(post.publishedAt).toLocaleDateString("en-US", {
               day: "numeric",
               month: "long",
               year: "numeric",
-            }
-          )}</p>
+            })}
+          </p>
         </div>
         {/* {post?.mainImage ? (
         <Image
@@ -40,6 +40,20 @@ export default function Post({category = [],post,}: {category: SanityDocument[];
         <div className="prose">
           {post?.body ? <PortableText value={post.body} /> : null}
         </div>
+        {post.tag?.length > 0 &&
+        <div className="text-white mt-4">
+          <div className="text-gray-500 font-bold text-base">TAGS-
+          {post.tag.map((t: string, index: number) => (
+            <div
+            key={index}
+            className="font-bold text-white inline-block rounded-lg bg-3 hover:bg-orange-800 px-2 mx-2 hover:text-white"
+            >
+              {t}
+            </div>
+          ))}
+          </div>
+        </div>
+        }
       </div>
       <div className="lg:flex lg:flex-col">
         <SocialWidget />
@@ -63,7 +77,9 @@ export default function Post({category = [],post,}: {category: SanityDocument[];
                         <h4 className="text-gray-500  hover:text-primary-3">
                           {category.title}
                         </h4>
-                        <p className="text-primary-3 text-xs">24</p>
+                        <p className="text-primary-3 text-xs">
+                          {category.numberOfBlogs}
+                        </p>
                       </li>
                     </Link>
                   );

@@ -21,7 +21,7 @@ export default async function Page({ params }: { params: any }) {
   return(
     <>
       <Navbar category={categories} PlugCategory={PluginCategory}/>
-      <div className="container mx-auto px-6 xl:px-52">
+      <div className="container mx-auto px-6 xl:px-36 2xl:px-52">
       <Post post={post} category={categories} />
       </div>
       <Footersocial/>

@@ -8,7 +8,7 @@ export const postsQuery = groq`*[_type == "post" && defined(slug.current)]{
 
 // Get a single post by its slug
 export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
-    title, mainImage, body,"author":author->name, publishedAt, "categories":categories[]->title, createdAt
+    title, mainImage, body,"author":author->name, publishedAt, "categories":categories[]->title, createdAt,"tag":tags[]->label
   }`;
 
 
@@ -19,7 +19,7 @@ export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][]
 
 // Get all Catergories
 export const catergoriesQuery = groq`*[_type =="category"]{
-  _id, title, slug
+  _id, title, slug,"numberOfBlogs": count(*[_type=="post" && references(^._id)])
 }`;
 
 
