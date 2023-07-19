@@ -9,6 +9,26 @@ import { client } from "../../sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 
 const builder = imageUrlBuilder(client);
+interface ImageProps {
+  value?: {
+    asset?: {
+      _ref?: string;
+    };
+    alt?: string;
+  };
+}
+const ImageComponent: React.FC<ImageProps> = ({ value }) => {
+  if (!value?.asset?._ref) {
+    return null;
+  }
+  return null;
+};
+
+const ptComponents = {
+  types: {
+    image: ImageComponent,
+  },
+};
 
 export default function Category({ blogs = [] }: { blogs: SanityDocument[] }) {
   return (
@@ -35,7 +55,7 @@ export default function Category({ blogs = [] }: { blogs: SanityDocument[] }) {
                 ) : null}
               </Link>
                 <div className="prose text-gray-500 line-clamp-4">
-                  <PortableText value={blog.body} />
+                {blog?.body ? <PortableText value={blog.body} components={ptComponents}/> : null}
                 </div>
             </div>
           ))}

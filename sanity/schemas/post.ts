@@ -57,6 +57,12 @@ export default defineType({
       of: [{type: 'reference', to: {type: 'tag'}}],
     }),
     defineField({
+      name: 'trending',
+      title: 'Trending',
+      type: 'boolean',
+      description: 'Check this box if the post is trending',
+    }),
+    defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',

@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import lazyImage from "../../../public/images/startablog.png";
 import { SanityDocument } from "next-sanity";
@@ -10,63 +11,94 @@ import SocialWidget from "../SocialWidget";
 
 const builder = imageUrlBuilder(client);
 
-function Blogs({category = [],posts = [],}: {category: SanityDocument[];posts: SanityDocument[];}) {
+interface ImageProps {
+  value?: {
+    asset?: {
+      _ref?: string;
+    };
+    alt?: string;
+  };
+}
+const ImageComponent: React.FC<ImageProps> = ({ value }) => {
+  if (!value?.asset?._ref) {
+    return null;
+  }
+  return null;
+};
+
+const ptComponents = {
+  types: {
+    image: ImageComponent,
+  },
+};
+
+function Blogs({category = [],posts = [],latestBlogs=[]}: {category: SanityDocument[];posts: SanityDocument[];latestBlogs:SanityDocument[]}) {
+  // const [randomPost, setRandomPost] = useState<SanityDocument | null>(null);
+
+  // useEffect(() => {
+  //   if (posts.length > 0) {
+  //     const randomIndex = Math.floor(Math.random() * posts.length);
+  //     setRandomPost(posts[randomIndex]);
+  //   }
+  // }, [posts]);
+
   return (
     <div className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
       <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12">
         <p className="text-gray-500 font-semibold uppercase mb-2 text-sm">
           new on blog
         </p>
-        {posts.slice(1, 2).map((post) => {
-          return (
-            <div key={post._id} className="mb-8 pb-12">
+        {latestBlogs.slice(0,1).map((latestBlogs)=> {
+          return(
+            <div key={latestBlogs._id} className="mb-8 pb-12">
               <div>
-                <Link href={`blog/${post.slug.current}`}>
+                <Link href={`blog/${latestBlogs.slug.current}`}>
                   <h1 className="font-bold text-gray-700 text-2xl mb-6 hover:text-3">
-                    {post.title}
+                    {latestBlogs.title}
                   </h1>
                 </Link>
+                {latestBlogs?.mainImage ? (
                 <Image
                   className="float-left m-0 w-1/3 mr-4 rounded-lg"
                   src={builder
-                    .image(post.mainImage)
+                    .image(latestBlogs.mainImage)
                     .width(300)
                     .height(200)
                     .url()}
-                  alt={post?.mainImage?.alt}
+                  alt={latestBlogs?.mainImage?.alt}
                   width={500}
                   height={500}
                 />
+                ) : null}
                 <div className="line-clamp-6">
-                  <PortableText value={post.body} />
+                {latestBlogs?.body ? <PortableText value={latestBlogs.body} components={ptComponents}/> : null}
                 </div>
               </div>
             </div>
-          );
-        })}
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
-          {posts.slice(0, 6).map((post) => {
-            return (
-              <div key={post._id}>
-                <div className="flex gap-4">
-                  <div className="w-full">
-                    <Image
-                      src={builder.image(post.mainImage).url()}
-                      alt="image"
-                      width={200}
-                      height={200}
-                    />
+          )})}
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
+            {latestBlogs.slice(0, 6).reverse().map((post) => {
+              return (
+                <div key={post._id}>
+                  <div className="flex gap-4">
+                    <div className="w-full min-h-[80px]">
+                      <Image
+                        src={builder.image(post.mainImage).url()}
+                        alt="image"
+                        width={200}
+                        height={200}
+                      />
+                    </div>
+                    <Link href={`blog/${post.slug.current}`}>
+                      <h1 className="font-bold text-gray-700 text-base mb-6 hover:text-3">
+                        {post.title}
+                      </h1>
+                    </Link>
                   </div>
-                  <Link href={`blog/${post.slug.current}`}>
-                    <h1 className="font-bold text-gray-700 text-base mb-6 hover:text-3">
-                      {post.title}
-                    </h1>
-                  </Link>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
       </div>
       <div className="lg:flex lg:flex-col">
         <SocialWidget/>

@@ -6,17 +6,59 @@ import { PortableText } from "@portabletext/react";
 import lazyImage from "../../public/images/startablog.png";
 import SocialWidget from "@/components/SocialWidget";
 import Link from "next/link";
+import { client } from "../../sanity/lib/client";
 
-// const builder = imageUrlBuilder(client);
+const builder = imageUrlBuilder(client);
 
-export default function Post({category = [],post,}: {category: SanityDocument[];post: SanityDocument;}) {
+interface ImageProps {
+  value?: {
+    asset?: {
+      _ref?: string;
+    };
+    alt?: string;
+  };
+}
+
+const ImageComponent: React.FC<ImageProps> = ({ value }) => {
+  if (!value?.asset?._ref) {
+    return null;
+  }
+  return (
+    <div className="flex justify-center items-center">
+    <Image
+      className="inline-block"
+      alt={value.alt || " "}
+      loading="lazy"
+      src={builder.image(value).url()}
+      width={450}
+      height={350}
+    />
+    </div>
+  );
+};
+
+const ptComponents = {
+  types: {
+    image: ImageComponent,
+  },
+};
+
+interface PostProps {
+  post: SanityDocument;
+  category: SanityDocument[];
+}
+
+// export default function Post({category = [],post,}: {category: SanityDocument[];post: SanityDocument;}) {
   // console.log(post.tag)
+const Post: React.FC<PostProps> = ({post,category=[]})=>{
   return (
     <main className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
       <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12 lg:">
+        <Link href={`/blog/category/${post.categories}`}>
         <p className="text-gray-500 font-bold uppercase mb-5 text-lg">
           {post?.categories}
         </p>
+        </Link>
         <h1 className="font-bold text-gray-700 text-2xl mb-6">{post.title}</h1>
         <div className="font-semibold text-gray-700 text-base mb-6">
           <p>by {post.author}</p>
@@ -38,7 +80,7 @@ export default function Post({category = [],post,}: {category: SanityDocument[];
         />
       ) : null} */}
         <div className="prose">
-          {post?.body ? <PortableText value={post.body} /> : null}
+          {post?.body ? <PortableText value={post.body} components={ptComponents}/> : null}
         </div>
         {post.tag?.length > 0 &&
         <div className="text-white mt-4">
@@ -96,3 +138,4 @@ export default function Post({category = [],post,}: {category: SanityDocument[];
     </main>
   );
 }
+export default Post;

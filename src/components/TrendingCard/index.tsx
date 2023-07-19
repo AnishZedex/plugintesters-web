@@ -5,7 +5,6 @@ import { client } from "../../../sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import React from "react";
-import { PluginBlogs } from "../../../queries";
 
 const builder = imageUrlBuilder(client);
 
@@ -30,33 +29,32 @@ const ptComponents = {
   },
 };
 
-function Card({ PluginCategory = [] }: { PluginCategory: SanityDocument[] }) {
+function TrendingCard({ trendingPosts = [] }: { trendingPosts: SanityDocument[] }) {
   return (
     <>
       <div className="flex text-[#757575] text-sm font-medium gap-2 my-6">
-        <div className="uppercase">featured wordpress plugins</div>
-        <Link href={"/blog/category/plugins"}><button>(View all)</button></Link>
+        <div className="uppercase">Trending Blogs</div>
+        {/* <Link href={"/blog/category/plugins"}><button>(View all)</button></Link> */}
       </div>
       <div className="overflow-hidden break-words lg:grid lg:grid-cols-3 lg:gap-4">
-        {PluginCategory.slice(0, 6).map((pluginblogs) => (
-          <div key={pluginblogs._id} className=" bg-white block mb-4 p-6 lg:hover:shadow-xl cursor-pointer">
+        {trendingPosts.slice(0, 6).map((trendblogs) => (
+          <div key={trendblogs._id} className=" bg-white block mb-4 p-6 lg:hover:shadow-xl cursor-pointer">
               <div className="flex">
               <Image
-                      src={builder.image(pluginblogs.mainImage).url()}
+                      src={builder.image(trendblogs.mainImage).url()}
                       alt="image"
                       width={90}
                       height={150}
                       className="mr-4"
                     />
-            <Link  href={`blog/${pluginblogs.slug.current}`}>
+            <Link  href={`blog/${trendblogs.slug.current}`}>
                 <div className="font-bold line-clamp-2">
-                  {pluginblogs.title}
-                  {/* {tutorialblogs.title.split(" ").slice(0, 1).join(" ")} */}
+                  {trendblogs.title}
                 </div>
         </Link>
               </div>
               <div className="mt-5 line-clamp-3">
-                {pluginblogs?.body ? <PortableText value={pluginblogs.body} components={ptComponents}/> : null}
+                {trendblogs?.body ? <PortableText value={trendblogs.body} components={ptComponents}/> : null}
               </div>
           </div>
         ))}
@@ -65,4 +63,4 @@ function Card({ PluginCategory = [] }: { PluginCategory: SanityDocument[] }) {
   );
 }
 
-export default Card;
+export default TrendingCard;
