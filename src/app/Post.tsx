@@ -16,6 +16,9 @@ interface ImageProps {
       _ref?: string;
     };
     alt?: string;
+    caption?: string;
+    title?:string;
+    description?:string;
   };
 }
 
@@ -24,6 +27,7 @@ const ImageComponent: React.FC<ImageProps> = ({ value }) => {
     return null;
   }
   return (
+    <>
     <div className="flex justify-center items-center">
     <Image
       className="inline-block"
@@ -34,6 +38,8 @@ const ImageComponent: React.FC<ImageProps> = ({ value }) => {
       height={350}
     />
     </div>
+
+    </>
   );
 };
 
@@ -55,11 +61,11 @@ const Post: React.FC<PostProps> = ({post,category=[]})=>{
   return (
     <main className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
       <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12 lg:">
-        {/* <Link href={`/blog/category/${post.categories.toString().lowercase()}`}> */}
+      <Link href={`/blog/category/${post.categories.toString().toLowerCase()}`}>
         <p className="text-gray-500 font-bold uppercase mb-5 text-lg">
           {post?.categories}
         </p>
-        {/* </Link> */}
+      </Link> 
         <h1 className="font-bold text-gray-700 text-2xl mb-6">{post.title}</h1>
         <div className="font-semibold text-gray-700 text-base mb-6">
           <p>by {post.author}</p>

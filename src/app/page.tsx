@@ -21,7 +21,7 @@ export default async function Home() {
     <>
       <Navbar category={categories} PlugCategory={PluginCategory}/>
         <div className="container mx-auto px-6 xl:px-36 2xl:px-52">
-          <Searchbar/>
+          <Searchbar trendingPosts={trendingPosts}/>
           <Blogs posts={posts} category={categories} latestBlogs={latestBlogs}/>
           <Card PluginCategory={PluginCategory}/>
           <TrendingCard trendingPosts={trendingPosts}/>

@@ -34,10 +34,10 @@ function TrendingCard({ trendingPosts = [] }: { trendingPosts: SanityDocument[] 
     <>
       <div className="flex text-[#757575] text-sm font-medium gap-2 my-6">
         <span className="uppercase">Trending Blogs</span>
-        {/* <Link href={"/blog/category/plugins"}><button>(View all)</button></Link> */}
       </div>
       <div className="overflow-hidden break-words lg:grid lg:grid-cols-3 lg:gap-4">
-        {trendingPosts.slice(0, 6).map((trendblogs) => (
+        {trendingPosts.length >0 &&
+         trendingPosts.slice(0, 6).map((trendblogs) => (
           <div key={trendblogs._id} className=" bg-white block mb-4 p-6 lg:hover:shadow-xl cursor-pointer">
               <div className="flex">
               <Image
@@ -57,7 +57,8 @@ function TrendingCard({ trendingPosts = [] }: { trendingPosts: SanityDocument[] 
                 {trendblogs?.body ? <PortableText value={trendblogs.body} components={ptComponents}/> : null}
               </div>
           </div>
-        ))}
+        ))
+      }
       </div>
     </>
   );
