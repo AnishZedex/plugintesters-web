@@ -46,12 +46,6 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
     }
   };
 
-  const handleBlur = () => {
-    // Close the search input and search results box when the input loses focus
-    setSearchResults([]);
-    setSearchQuery("");
-  };
-
   return (
     <>
       <div className="relative mt-8 bg-white">
@@ -69,7 +63,6 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
             onChange={handleSearchChange}
             placeholder="Enter your keywords and search WPBeginner..."
             className="w-full focus:outline-none"
-            onBlur={handleBlur}
           />
           <button
             type="submit"
