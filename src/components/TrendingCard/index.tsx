@@ -33,7 +33,7 @@ function TrendingCard({ trendingPosts = [] }: { trendingPosts: SanityDocument[] 
   return (
     <>
       <div className="flex text-[#757575] text-sm font-medium gap-2 my-6">
-        <div className="uppercase">Trending Blogs</div>
+        <span className="uppercase">Trending Blogs</span>
         {/* <Link href={"/blog/category/plugins"}><button>(View all)</button></Link> */}
       </div>
       <div className="overflow-hidden break-words lg:grid lg:grid-cols-3 lg:gap-4">

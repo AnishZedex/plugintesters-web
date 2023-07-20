@@ -5,9 +5,15 @@ import Post from "../../Post";
 import FooterCopywrite from "../../../components/Footer";
 import Footersocial from "../../../components/Footer/footersocial";
 import Newsletter from "../../../components/Footer/Newsletter";
-import OrangeRibbon from "../../../components/OrangeRibbon";
-import { cachedClient } from "../../../../sanity/lib/client";
+import { cachedClient,  } from "../../../../sanity/lib/client";
 
+export async function generateMetadata({ params }: { params: any }){ 
+  const post = await cachedClient(postQuery, params)
+  return {
+    title: post?.metadata?.title,
+    description: post?.metadata?.description,
+  }
+}
 
 export async function generateStaticParams() {
     const posts = await cachedClient(postPathsQuery);

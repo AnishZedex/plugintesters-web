@@ -49,8 +49,9 @@ interface PostProps {
 }
 
 // export default function Post({category = [],post,}: {category: SanityDocument[];post: SanityDocument;}) {
-  // console.log(post.tag)
+  
 const Post: React.FC<PostProps> = ({post,category=[]})=>{
+  // console.log(post.metadata)
   return (
     <main className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
       <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12 lg:">

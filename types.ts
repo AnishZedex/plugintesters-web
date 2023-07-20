@@ -67,3 +67,12 @@ interface Title{
     _type: string;
     current: string;
 }
+export interface MetaData {
+
+    title?: string;
+  
+    description?: string;
+  
+    canonicalUrl?: string;
+  
+  }

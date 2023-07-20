@@ -17,7 +17,6 @@ export default async function Home() {
   const categories = await cachedClient(catergoriesQuery)
   const latestBlogs = await cachedClient(LatestPostsQuery)
   const trendingPosts = await cachedClient(trendingPostsQuery)
-  // const TutorialCategory = await cachedClient(TutorialBlogs)
   return (
     <>
       <Navbar category={categories} PlugCategory={PluginCategory}/>
