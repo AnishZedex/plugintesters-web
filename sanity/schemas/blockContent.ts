@@ -76,6 +76,11 @@ export default defineType({
           title: 'Title',
         },
         {
+          name: 'alt_title',
+          type: 'string',
+          title: 'Alternative Title',
+        },
+        {
           name: 'caption',
           type: 'string',
           title: 'Caption',
