@@ -1,12 +1,19 @@
 import React from 'react'
+import { SanityDocument } from "next-sanity";
 import { HomeIcon, LinkedInLogoIcon, GitHubLogoIcon, InstagramLogoIcon, VercelLogoIcon, DiscordLogoIcon, TwitterLogoIcon, SketchLogoIcon, EnvelopeClosedIcon } from '@radix-ui/react-icons'
 import {IoLogoFacebook} from 'react-icons/io5'
 import {IoLogoInstagram} from 'react-icons/io5'
 import {IoLogoPinterest} from 'react-icons/io5'
 import {FaTelegram} from 'react-icons/fa'
 import {ImTwitter} from 'react-icons/im'
+import Link from 'next/link'
 
-const SocialWidget = () => {
+function SocialWidget({
+  siteConfig,
+}: {
+  siteConfig: SanityDocument;
+}){
+  // console.log(siteConfig.socials[0].title)
   return (
     <>
         <div className="mb-4 p-6 bg-white lg:p-6 lg:mb-4">
@@ -19,8 +26,9 @@ const SocialWidget = () => {
           <div className="grid grid-cols-4 gap-4">
             <div className="flex justify-center items-center">
               <div>
-                {/* <SketchLogoIcon className="h-7 w-7 text-[#8b8929]" /> */}
+                <Link href={`${siteConfig?.socials[0].link}`}>
                 <IoLogoFacebook size={32} color='blue'/>
+                </Link>              
               </div>
             </div>
             <div className="flex justify-center items-center">
@@ -30,18 +38,18 @@ const SocialWidget = () => {
             </div>
             <div className="flex justify-center items-center">
               <div>
-                <LinkedInLogoIcon className="h-7 w-7 text-[#0A66C2]" />
+              <Link href={`${siteConfig?.socials[1].link}`}>
+                <LinkedInLogoIcon className="h-8 w-8 text-[#0A66C2]" />
+                </Link> 
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div>
-                {/* <GitHubLogoIcon className="h-7 w-7 text-[#000]" /> */}
                 <IoLogoPinterest size={40} color='#E60023'/>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div>
-                {/* <InstagramLogoIcon className="h-7 w-7 text-[#dc3c3c]" /> */}
                 <IoLogoInstagram size={32} color='#C13584'/>
               </div>
             </div>

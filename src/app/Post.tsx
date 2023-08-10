@@ -52,11 +52,10 @@ const ptComponents = {
 interface PostProps {
   post: SanityDocument;
   category: SanityDocument[];
+  siteConfig:SanityDocument;
 }
 
-// export default function Post({category = [],post,}: {category: SanityDocument[];post: SanityDocument;}) {
-
-const Post: React.FC<PostProps> = ({ post, category = [] }) => {
+const Post: React.FC<PostProps> = ({ post, category = [], siteConfig}) => {
   // console.log(post.metadata)
   return (
     <main className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
@@ -118,7 +117,7 @@ const Post: React.FC<PostProps> = ({ post, category = [] }) => {
         )}
       </div>
       <div className="lg:flex lg:flex-col">
-        <SocialWidget />
+        <SocialWidget siteConfig={siteConfig} />
         <div className="mb-4 lg:mb-4 cursor-pointer flex justify-center items-center">
           <a href="/">
             <Image

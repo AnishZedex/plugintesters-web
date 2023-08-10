@@ -30,7 +30,7 @@ const ptComponents = {
   },
 };
 
-export default function Tag({ blogs = [], heading }: { blogs: SanityDocument[] , heading: string}) {
+export default function Tag({ blogs = [], heading, siteConfig }: { blogs: SanityDocument[] , heading: string, siteConfig:SanityDocument}) {
   return (
     <>
       <div className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
@@ -61,7 +61,7 @@ export default function Tag({ blogs = [], heading }: { blogs: SanityDocument[] ,
           ))}
         </div>
         <div className="lg:flex lg:flex-col">
-          <SocialWidget />
+          <SocialWidget siteConfig={siteConfig}/>
           <div className="mb-4 lg:mb-4 cursor-pointer flex justify-center items-center">
             <a href="/">
               <Image

@@ -46,7 +46,24 @@ export default defineType({
             name: 'socials',
             title: 'Social Links',
             type: 'array',
-            of: [{ type: 'string' }],
+            description: 'Do not change the order of the Links',
+            of: [
+              {
+                type: 'object',
+                fields: [
+                  {
+                    name: 'title',
+                    title: 'Title',
+                    type: 'string',
+                  },
+                  {
+                    name: 'link',
+                    title: 'Link',
+                    type: 'string',
+                  },
+                ],
+              },
+            ],
           }),
         ]
     })

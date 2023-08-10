@@ -32,7 +32,7 @@ const ptComponents = {
   },
 };
 
-function Blogs({category = [],posts = [],latestBlogs=[]}: {category: SanityDocument[];posts: SanityDocument[];latestBlogs:SanityDocument[]}) {
+function Blogs({category = [],posts = [],latestBlogs=[], siteConfig}: {category: SanityDocument[];posts: SanityDocument[];latestBlogs:SanityDocument[];siteConfig:SanityDocument}) {
   // const [randomPost, setRandomPost] = useState<SanityDocument | null>(null);
 
   // useEffect(() => {
@@ -101,7 +101,7 @@ function Blogs({category = [],posts = [],latestBlogs=[]}: {category: SanityDocum
           </div>
       </div>
       <div className="lg:flex lg:flex-col">
-        <SocialWidget/>
+        <SocialWidget siteConfig={siteConfig}/>
         <div className="mb-4 lg:mb-4 cursor-pointer flex justify-center items-center">
           <a href="/">
             <Image

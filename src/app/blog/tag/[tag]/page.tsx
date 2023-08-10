@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: any }) {
     <>
       <Navbar category={categories} PlugCategory={PluginCategory} TutCategory={TutorialCategory} siteConfig={siteConfig}/>
       <div className="container mx-auto px-6 xl:px-36 2xl:px-52">
-      <Tag blogs={blogs} heading={params.tag}/>
+      <Tag blogs={blogs} heading={params.tag} siteConfig={siteConfig}/>
       </div>
       <Footersocial/>
       <Newsletter/>

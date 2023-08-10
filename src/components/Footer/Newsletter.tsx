@@ -6,6 +6,7 @@ import {
   GitHubLogoIcon,
   InstagramLogoIcon,
 } from "@radix-ui/react-icons";
+import {IoLogoFacebook} from 'react-icons/io5'
 
 const Newsletter = () => {
   return (
@@ -22,7 +23,7 @@ const Newsletter = () => {
             </p>
             <p className="font-sans hover:text-3">Join our team: We are Hiring!</p>
             <div className="flex gap-5 my-auto ">
-                <GitHubLogoIcon className="hover:text-3 h-5 w-5" />
+                <IoLogoFacebook size={22}/>
                 <InstagramLogoIcon className="hover:text-3 h-5 w-5" />
                 <LinkedInLogoIcon className="hover:text-3 h-5 w-5" />
                 <TwitterLogoIcon className="hover:text-3 h-5 w-5" />

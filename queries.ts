@@ -90,5 +90,11 @@ export const blogByAuthors = groq`*[_type=='post'&& references(*[_type=="author"
 
 // Site Config query 
 export const siteConfigQuery = groq`*[_type == "siteConfig"][0]{
-  title,description,mainLogo
-}`
+  title,
+  description,
+  mainLogo,
+  socials[] {
+    title,
+    link
+  }
+}`;

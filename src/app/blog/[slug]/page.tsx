@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: any }) {
     <>
       <Navbar category={categories} PlugCategory={PluginCategory} TutCategory={TutorialCategory} siteConfig={siteConfig}/>
       <div className="container mx-auto px-6 xl:px-36 2xl:px-52">
-      <Post post={post} category={categories} />
+      <Post post={post} category={categories} siteConfig={siteConfig}/>
       </div>
       <Footersocial/>
       <Newsletter/>
