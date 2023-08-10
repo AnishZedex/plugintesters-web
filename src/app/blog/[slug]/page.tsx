@@ -1,5 +1,5 @@
 import { SanityDocument } from "@sanity/client";
-import { PluginBlogs, catergoriesQuery, postPathsQuery, postQuery } from "../../../../queries";
+import { PluginBlogs, TutorialBlogs, catergoriesQuery, postPathsQuery, postQuery, siteConfigQuery } from "../../../../queries";
 import Navbar from "../../../components/Navbar"
 import Post from "../../Post";
 import FooterCopywrite from "../../../components/Footer";
@@ -23,10 +23,12 @@ export async function generateStaticParams() {
 export default async function Page({ params }: { params: any }) {
   const post = await cachedClient<SanityDocument>(postQuery, params);
   const PluginCategory = await cachedClient(PluginBlogs)
+  const TutorialCategory = await cachedClient(TutorialBlogs)
   const categories = await cachedClient(catergoriesQuery)
+  const siteConfig = await cachedClient(siteConfigQuery)
   return(
     <>
-      <Navbar category={categories} PlugCategory={PluginCategory}/>
+      <Navbar category={categories} PlugCategory={PluginCategory} TutCategory={TutorialCategory} siteConfig={siteConfig}/>
       <div className="container mx-auto px-6 xl:px-36 2xl:px-52">
       <Post post={post} category={categories} />
       </div>

@@ -1,5 +1,10 @@
 import React from 'react'
 import { HomeIcon, LinkedInLogoIcon, GitHubLogoIcon, InstagramLogoIcon, VercelLogoIcon, DiscordLogoIcon, TwitterLogoIcon, SketchLogoIcon, EnvelopeClosedIcon } from '@radix-ui/react-icons'
+import {IoLogoFacebook} from 'react-icons/io5'
+import {IoLogoInstagram} from 'react-icons/io5'
+import {IoLogoPinterest} from 'react-icons/io5'
+import {FaTelegram} from 'react-icons/fa'
+import {ImTwitter} from 'react-icons/im'
 
 const SocialWidget = () => {
   return (
@@ -14,32 +19,35 @@ const SocialWidget = () => {
           <div className="grid grid-cols-4 gap-4">
             <div className="flex justify-center items-center">
               <div>
-                <SketchLogoIcon className="h-7 w-7 text-[#8b8929]" />
+                {/* <SketchLogoIcon className="h-7 w-7 text-[#8b8929]" /> */}
+                <IoLogoFacebook size={32} color='blue'/>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div>
-                <TwitterLogoIcon className="h-7 w-7 text-[#33f1fe]" />
+                <ImTwitter size={32} color='#1DA1F2'/>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div>
-                <LinkedInLogoIcon className="h-7 w-7 text-[#4194f3]" />
+                <LinkedInLogoIcon className="h-7 w-7 text-[#0A66C2]" />
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div>
-                <GitHubLogoIcon className="h-7 w-7 text-[#000]" />
+                {/* <GitHubLogoIcon className="h-7 w-7 text-[#000]" /> */}
+                <IoLogoPinterest size={40} color='#E60023'/>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div>
-                <InstagramLogoIcon className="h-7 w-7 text-[#dc3c3c]" />
+                {/* <InstagramLogoIcon className="h-7 w-7 text-[#dc3c3c]" /> */}
+                <IoLogoInstagram size={32} color='#C13584'/>
               </div>
             </div>
             <div className="flex justify-center items-center">
               <div>
-                <VercelLogoIcon className="h-7 w-7 text-[#000]" />
+                <FaTelegram size={32} color="#0088CC"/>
               </div>
             </div>
             <div className="flex justify-center items-center">
@@ -49,7 +57,7 @@ const SocialWidget = () => {
             </div>
             <div className="flex justify-center items-center">
               <div>
-                <EnvelopeClosedIcon className="h-7 w-7 text-[#4ff378]" />
+              <EnvelopeClosedIcon className="h-7 w-7 text-[#000]" />
               </div>
             </div>
           </div>

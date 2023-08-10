@@ -54,7 +54,8 @@ function TrendingCard({ trendingPosts = [] }: { trendingPosts: SanityDocument[] 
         </Link>
               </div>
               <div className="mt-5 line-clamp-3">
-                {trendblogs?.body ? <PortableText value={trendblogs.body} components={ptComponents}/> : null}
+                {/* {trendblogs?.body ? <PortableText value={trendblogs.body} components={ptComponents}/> : null} */}
+                {trendblogs?.postDesc}
               </div>
           </div>
         ))

@@ -1,10 +1,6 @@
 import { cachedClient } from "../../../sanity/lib/client"
-import { PluginBlogs, TutorialBlogs, catergoriesQuery, postsQuery } from "../../../queries"
+import { PluginBlogs, TutorialBlogs, catergoriesQuery, postsQuery, siteConfigQuery } from "../../../queries"
 import Navbar from "@/components/Navbar"
-import Searchbar from "@/components/Searchbar"
-import Blogs from "@/components/Blogs"
-import Card from "@/components/Card"
-import Guide from "@/components/Guide"
 import Footersocial from "@/components/Footer/footersocial"
 import Newsletter from "@/components/Footer/Newsletter"
 import FooterCopywrite from "@/components/Footer"
@@ -14,9 +10,11 @@ export default async function Page(){
     
     const categories = await cachedClient(catergoriesQuery)
     const PluginCategory = await cachedClient(PluginBlogs)
+    const TutorialCategory = await cachedClient(TutorialBlogs)
+    const siteConfig = await cachedClient(siteConfigQuery)
     return(
         <>
-      <Navbar category={categories} PlugCategory={PluginCategory}/>
+      <Navbar category={categories} PlugCategory={PluginCategory} TutCategory={TutorialCategory}siteConfig={siteConfig}/>
         <div className="container mx-auto px-6 xl:px-36 2xl:px-52">
           <ContactUs/>
         </div>

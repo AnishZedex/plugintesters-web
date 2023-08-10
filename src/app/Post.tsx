@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 import lazyImage from "../../public/images/startablog.png";
 import SocialWidget from "@/components/SocialWidget";
 import Link from "next/link";
+import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { client } from "../../sanity/lib/client";
 
 const builder = imageUrlBuilder(client);
@@ -17,8 +18,8 @@ interface ImageProps {
     };
     alt?: string;
     caption?: string;
-    title?:string;
-    description?:string;
+    title?: string;
+    description?: string;
   };
 }
 
@@ -28,17 +29,16 @@ const ImageComponent: React.FC<ImageProps> = ({ value }) => {
   }
   return (
     <>
-    <div className="flex justify-center items-center">
-    <Image
-      className="inline-block"
-      alt={value.alt || " "}
-      loading="lazy"
-      src={builder.image(value).url()}
-      width={450}
-      height={350}
-    />
-    </div>
-
+      <div className="flex justify-center items-center">
+        <Image
+          className="inline-block"
+          alt={value.alt || " "}
+          loading="lazy"
+          src={builder.image(value).url()}
+          width={450}
+          height={350}
+        />
+      </div>
     </>
   );
 };
@@ -55,20 +55,28 @@ interface PostProps {
 }
 
 // export default function Post({category = [],post,}: {category: SanityDocument[];post: SanityDocument;}) {
-  
-const Post: React.FC<PostProps> = ({post,category=[]})=>{
+
+const Post: React.FC<PostProps> = ({ post, category = [] }) => {
   // console.log(post.metadata)
   return (
     <main className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
       <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12 lg:">
-      <Link href={`/blog/category/${post.categories.toString().toLowerCase()}`}>
-        <p className="text-gray-500 font-bold uppercase mb-5 text-lg">
-          {post?.categories}
-        </p>
-      </Link> 
+      <div className="text-gray-500 font-bold uppercase mb-5 text-lg flex items-center gap-1">
+  <Link href={'/'}>WPbeginner</Link>
+  <ChevronRightIcon />
+  <Link href={`/blog/category/${post?.primaryCategory?.toString().toLowerCase()}`}>{post?.primaryCategory}</Link>
+</div>
+
         <h1 className="font-bold text-gray-700 text-2xl mb-6">{post.title}</h1>
         <div className="font-semibold text-gray-700 text-base mb-6">
-          <p>by {post.author}</p>
+          <Link
+            href={`/blog/author/${post.author
+              .toLowerCase()
+              .replace(/\s+/g, "-")}`}
+          >
+            <p>by {post.author}</p>
+          </Link>
+
           <p>
             {new Date(post.publishedAt).toLocaleDateString("en-US", {
               day: "numeric",
@@ -87,22 +95,27 @@ const Post: React.FC<PostProps> = ({post,category=[]})=>{
         />
       ) : null} */}
         <div className="prose">
-          {post?.body ? <PortableText value={post.body} components={ptComponents}/> : null}
+          {post?.body ? (
+            <PortableText value={post.body} components={ptComponents} />
+          ) : null}
         </div>
-        {post.tag?.length > 0 &&
-        <div className="text-white mt-4">
-          <div className="text-gray-500 font-bold text-base">TAGS-
-          {post.tag.map((t: string, index: number) => (
-            <div
-            key={index}
-            className="font-bold text-white inline-block rounded-lg bg-3 hover:bg-orange-800 px-2 mx-2 hover:text-white"
-            >
-              {t}
+        {post.tag?.length > 0 && (
+          <div className="text-white mt-4">
+            <div className="text-gray-500 font-bold text-base">
+              TAGS-
+              {post.tag.map((t: string, index: number) => (
+                <Link
+                  key={index}
+                  href={`/blog/tag/${t.toString().toLowerCase().replace(/\s+/g, "-")}`}
+                >
+                  <div className="font-bold text-white inline-block rounded-lg bg-3 hover:bg-orange-800 px-2 mx-2 hover:text-white">
+                    {t}
+                  </div>
+                </Link>
+              ))}
             </div>
-          ))}
           </div>
-        </div>
-        }
+        )}
       </div>
       <div className="lg:flex lg:flex-col">
         <SocialWidget />
@@ -144,5 +157,5 @@ const Post: React.FC<PostProps> = ({post,category=[]})=>{
       </div>
     </main>
   );
-}
+};
 export default Post;

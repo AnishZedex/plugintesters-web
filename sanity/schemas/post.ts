@@ -51,6 +51,12 @@ export default defineType({
       of: [{type: 'reference', to: {type: 'category'}}],
     }),
     defineField({
+      name: 'primaryCategory',
+      title: 'Primary Category',
+      type: 'reference',
+      to: [{ type: 'category' }],
+    }),    
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
@@ -66,6 +72,12 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+    }),
+    defineField({
+      name: 'postDesc',
+      title: 'Post Description',
+      type: 'string',
+      description: 'This will be displayed on the cards - Write 3 lines description',
     }),
     defineField({
       name: 'body',

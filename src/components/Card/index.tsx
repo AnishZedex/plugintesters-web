@@ -56,7 +56,8 @@ function Card({ PluginCategory = [] }: { PluginCategory: SanityDocument[] }) {
         </Link>
               </div>
               <div className="mt-5 line-clamp-3">
-                {pluginblogs?.body ? <PortableText value={pluginblogs.body} components={ptComponents}/> : null}
+                {/* {pluginblogs?.body ? <PortableText value={pluginblogs.body} components={ptComponents}/> : null} */}
+                {pluginblogs?.postDesc}
               </div>
           </div>
         ))}

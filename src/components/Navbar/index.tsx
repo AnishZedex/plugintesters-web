@@ -18,14 +18,23 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import React, { useEffect, useState } from "react";
 import { SanityDocument } from "next-sanity";
+import { client } from "../../../sanity/lib/client";
 import Link from "next/link";
+import imageUrlBuilder from "@sanity/image-url";
+import Image from "next/image";
+
+const builder = imageUrlBuilder(client);
 
 function Navbar({
   category = [],
   PlugCategory = [],
+  TutCategory = [],
+  siteConfig,
 }: {
   category: SanityDocument[];
   PlugCategory: SanityDocument[];
+  TutCategory: SanityDocument[];
+  siteConfig: SanityDocument;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const navOpen = () => {
@@ -70,8 +79,13 @@ function Navbar({
   return (
     <nav className="">
       <NavigationMenu.Root className="relative z-[1] flex bg-2 justify-between lg:justify-around items-center py-2 w-full mx-auto px-4 text lg:px-10">
-        <Link href="/" className="italic text-xl font-extrabold">
-          wpbeginner
+        <Link href="/">
+        <Image
+          src={builder.image(siteConfig?.mainLogo).url()}
+          alt="logo"
+          width={200}
+          height={200}
+        />
         </Link>
 
         <NavigationMenu.List className="hidden lg:flex m-0 list-none gap-4">
@@ -119,7 +133,33 @@ function Navbar({
                   <div key={post._id}>
                     <li className="flex items-center text-black font-medium p-3">
                       <Link href={`/blog/${post.slug.current}`}>
-                        {post.title.split(" ").slice(0, 1).join(" ")}
+                        {post.title}
+                      </Link>
+                    </li>
+                  </div>
+                ))}
+              </ul>
+            </NavigationMenu.Content>
+          </NavigationMenu.Item>
+
+          <NavigationMenu.Item>
+            <NavigationMenu.Trigger className="text hover:bg-2 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-base font-bold leading-none outline-none focus:shadow-[0_0_0_2px]">
+              Tutorials{" "}
+              <CaretDownIcon
+                className="text relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+                aria-hidden
+              />
+            </NavigationMenu.Trigger>
+            <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute w-full sm:w-auto bg-white">
+              <ul className="m-0 p-6 sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
+                <li className="text-gray-500 font-semibold uppercase mb-2 text-sm">
+                  posts
+                </li>
+                {TutCategory.map((post) => (
+                  <div key={post._id}>
+                    <li className="flex items-center text-black font-medium p-3">
+                      <Link href={`/blog/${post.slug.current}`}>
+                        {post.title}
                       </Link>
                     </li>
                   </div>
@@ -176,14 +216,14 @@ function Navbar({
               </li>
               {isCategory && (
                 <ul className="font-medium list-disc pl-4">
-                {category.map((category) => (
-                  <li key={category._id} className="pb-2">
-                    <Link href={`/blog/category/${category.slug.current}`}>
-                      {category.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                  {category.map((category) => (
+                    <li key={category._id} className="pb-2">
+                      <Link href={`/blog/category/${category.slug.current}`}>
+                        {category.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               )}
               <li className="text-lg font-bold flex justify-between items-center">
                 <button onClick={plugOpen}>Plugins</button>
@@ -199,14 +239,14 @@ function Navbar({
               </li>
               {isPlugin && (
                 <ul className="font-medium list-disc pl-4">
-                {PlugCategory.map((post) => (
-                  <li key={post._id} className="pb-2">
-                    <Link href={`/blog/${post.slug.current}`}>
-                      {post.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                  {PlugCategory.map((post) => (
+                    <li key={post._id} className="pb-2">
+                      <Link href={`/blog/${post.slug.current}`}>
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               )}
               <Link href={`/contact`}>
                 <div className="flex justify-between">
