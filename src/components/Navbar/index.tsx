@@ -51,6 +51,11 @@ function Navbar({
     setIsPlugin(!isPlugin);
   };
 
+  const [isTut, setIsTut] = useState(false);
+  const tutOpen = () => {
+    setIsTut(!isTut);
+  };
+
   useEffect(() => {
     if (isOpen) {
       // Add 'overflow-hidden' class to body when menu is open
@@ -240,6 +245,29 @@ function Navbar({
               {isPlugin && (
                 <ul className="font-medium list-disc pl-4">
                   {PlugCategory.map((post) => (
+                    <li key={post._id} className="pb-2">
+                      <Link href={`/blog/${post.slug.current}`}>
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <li className="text-lg font-bold flex justify-between items-center">
+                <button onClick={tutOpen}>Tutorials</button>
+                {!isTut ? (
+                  <button onClick={tutOpen}>
+                    <ChevronRightIcon />
+                  </button>
+                ) : (
+                  <button onClick={tutOpen}>
+                    <ChevronDownIcon />
+                  </button>
+                )}
+              </li>
+              {isTut && (
+                <ul className="font-medium list-disc pl-4">
+                  {TutCategory.map((post) => (
                     <li key={post._id} className="pb-2">
                       <Link href={`/blog/${post.slug.current}`}>
                         {post.title}
