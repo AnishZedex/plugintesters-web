@@ -3,8 +3,13 @@ import SocialWidget from "@/components/SocialWidget";
 import React,{ useState } from "react";
 import Image from "next/image";
 import lazyImage from "../../public/images/startablog.png"
+import { SanityDocument } from "next-sanity";
 
-const ContactUs = () => {
+interface ContactUsProps {
+  siteConfig:SanityDocument;
+}
+
+const ContactUs: React.FC<ContactUsProps> = ({siteConfig})=> {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
@@ -74,7 +79,7 @@ const ContactUs = () => {
         </div>
       </div>
         <div className="lg:flex lg:flex-col">
-          <SocialWidget />
+          <SocialWidget siteConfig={siteConfig}/>
           <div className="mb-4 lg:mb-4 cursor-pointer flex justify-center items-center">
             <a href="/">
               <Image

@@ -16,7 +16,7 @@ export default async function Page(){
         <>
       <Navbar category={categories} PlugCategory={PluginCategory} TutCategory={TutorialCategory}siteConfig={siteConfig}/>
         <div className="container mx-auto px-6 xl:px-36 2xl:px-52">
-          <ContactUs/>
+          <ContactUs siteConfig={siteConfig}/>
         </div>
         <Footersocial/>
         <Newsletter/>
