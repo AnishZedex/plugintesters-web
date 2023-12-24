@@ -58,24 +58,19 @@ function Navbar({
 
   useEffect(() => {
     if (isOpen) {
-      // Add 'overflow-hidden' class to body when menu is open
       document.body.classList.add("overflow-hidden");
     } else {
-      // Remove 'overflow-hidden' class from body when menu is closed
       document.body.classList.remove("overflow-hidden");
     }
   }, [isOpen]);
 
   useEffect(() => {
     const handleResize = () => {
-      // Check if the viewport width is larger than or equal to 'lg' breakpoint (e.g., 1024px)
       if (window.innerWidth >= 1024 && isOpen) {
         setIsOpen(false);
       }
     };
-    // Add the resize event listener
     window.addEventListener("resize", handleResize);
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -191,9 +186,6 @@ function Navbar({
           </div>
         </div>
         <div className="py-3 pr-4 flex gap-4 lg:hidden">
-          {/* <button className="">
-            <MagnifyingGlassIcon className="w-6 h-6 text" />
-          </button> */}
           {!isOpen ? (
             <button className="Hamburger Menu" onClick={navOpen}>
               <HamburgerMenuIcon className="w-6 h-6 text" />

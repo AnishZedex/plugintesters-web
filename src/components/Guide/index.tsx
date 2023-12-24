@@ -23,16 +23,14 @@ function Guide({ posts = [] }: { posts: SanityDocument[] }) {
 
   const handleSwipeEnd = () => {
     if (touchEndX - touchStartX > SWIPE_THRESHOLD && !preventSwipe) {
-      // Swiped right
       setActiveSlide((prevSlide) =>
         prevSlide === 0 ? Math.ceil(posts.length / 6) - 1 : prevSlide - 1
       );
     } else if (touchStartX - touchEndX > SWIPE_THRESHOLD && !preventSwipe) {
-      // Swiped left
       setActiveSlide((prevSlide) => (prevSlide + 1) % Math.ceil(posts.length / 6));
     }
-    setTouchStartX(0); // Reset touchStartX value
-    setTouchEndX(0); // Reset touchEndX value
+    setTouchStartX(0); 
+    setTouchEndX(0);
   };
 
   const handleTitleClick = () => {

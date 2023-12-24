@@ -33,14 +33,6 @@ const ptComponents = {
 };
 
 function Blogs({category = [],posts = [],latestBlogs=[], siteConfig}: {category: SanityDocument[];posts: SanityDocument[];latestBlogs:SanityDocument[];siteConfig:SanityDocument}) {
-  // const [randomPost, setRandomPost] = useState<SanityDocument | null>(null);
-
-  // useEffect(() => {
-  //   if (posts.length > 0) {
-  //     const randomIndex = Math.floor(Math.random() * posts.length);
-  //     setRandomPost(posts[randomIndex]);
-  //   }
-  // }, [posts]);
 
   return (
     <div className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">

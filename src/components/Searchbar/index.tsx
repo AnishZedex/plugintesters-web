@@ -5,17 +5,16 @@ import { SanityDocument } from "next-sanity";
 import Link from "next/link";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
-// const Searchbar = () => {
+
   function Searchbar({ trendingPosts = [] }: { trendingPosts: SanityDocument[] }) {
     
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SanityDocument[]>([]);
-  const [showNoResults, setShowNoResults] = useState(false); // Add state for showing "No Results Found" message
+  const [showNoResults, setShowNoResults] = useState(false); 
 
   const handleSearchSubmit = async (event: any) => {
     event.preventDefault();
     try {
-      // Perform search logic using the searchQuery state
       const response = await cachedClient(
         `*[_type == "post" && (title match "*${searchQuery}*"
         || categories[]->title match "*${searchQuery}*"
@@ -23,7 +22,7 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
       );
       
       if (response.length === 0) {
-        setShowNoResults(true); // Show "No Results Found" message if search results are empty
+        setShowNoResults(true);
       } else {
         setShowNoResults(false);
         setSearchResults(response);
@@ -33,15 +32,13 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
     } catch (error) {
       console.error("Error occurred while searching:", error);
     }
-    // Reset the search query
     setSearchQuery("");
   };
 
   const handleSearchChange = (event: any) => {
     setSearchQuery(event.target.value);
-    setShowNoResults(false); // Hide "No Results Found" message when search query changes
+    setShowNoResults(false);
     if (event.target.value === "") {
-      // Hide search results when the search query is empty
       setSearchResults([]);
     }
   };
@@ -72,7 +69,6 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
           </button>
         </form>
       </div>
-      {/* Show "No Results Found" message */}
       {showNoResults && (
         <div className="bg-white text-black rounded-lg shadow-md">
           <p className="p-4 border-b text-center">No Results Found</p>
@@ -88,7 +84,6 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
           ))}
         </div>
       )}
-      {/* Display search results */}
       {!showNoResults && (
         <div className="bg-white text-black rounded-lg shadow-md">
           {searchResults.map((post) => (

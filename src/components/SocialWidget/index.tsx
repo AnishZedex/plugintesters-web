@@ -13,7 +13,6 @@ function SocialWidget({
 }: {
   siteConfig: SanityDocument;
 }){
-  // console.log(siteConfig.socials[0].title)
   return (
     <>
         <div className="mb-4 p-6 bg-white lg:p-6 lg:mb-4">

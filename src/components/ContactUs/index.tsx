@@ -2,7 +2,7 @@
 import SocialWidget from "@/components/SocialWidget";
 import React,{ useState } from "react";
 import Image from "next/image";
-import lazyImage from "../../public/images/startablog.png"
+import lazyImage from "../../../public/images/startablog.png"
 import { SanityDocument } from "next-sanity";
 
 interface ContactUsProps {
@@ -16,8 +16,6 @@ const ContactUs: React.FC<ContactUsProps> = ({siteConfig})=> {
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    // console.log(name, email, message);
-    // Reset the form fields after submission
     setName("");
     setEmail("");
     setMessage("");

@@ -1,11 +1,11 @@
 import { SanityDocument } from "@sanity/client";
-import { PluginBlogs, TutorialBlogs, blogByCategory, blogByTags, categoriesPathQuery, catergoriesQuery, siteConfigQuery, tagsPathQuery } from "../../../../../queries";
+import { PluginBlogs, TutorialBlogs, blogByTags, catergoriesQuery, siteConfigQuery, tagsPathQuery } from "../../../../store/queries";
 import Navbar from "../../../../components/Navbar"
 import FooterCopywrite from "../../../../components/Footer";
 import Footersocial from "../../../../components/Footer/footersocial";
 import Newsletter from "../../../../components/Footer/Newsletter";
 import { cachedClient } from "../../../../../sanity/lib/client";
-import Tag from "@/app/Tag";
+import Tag from "@/components/Tag";
 
 
 export async function generateStaticParams() {

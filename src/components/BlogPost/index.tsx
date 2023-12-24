@@ -3,11 +3,11 @@ import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "@sanity/client";
 import { PortableText } from "@portabletext/react";
-import lazyImage from "../../public/images/startablog.png";
+import lazyImage from "../../../public/images/startablog.png";
 import SocialWidget from "@/components/SocialWidget";
 import Link from "next/link";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
-import { client } from "../../sanity/lib/client";
+import { client } from "../../../sanity/lib/client";
 
 const builder = imageUrlBuilder(client);
 
@@ -55,8 +55,7 @@ interface PostProps {
   siteConfig:SanityDocument;
 }
 
-const Post: React.FC<PostProps> = ({ post, category = [], siteConfig}) => {
-  // console.log(post.metadata)
+const BlogPost: React.FC<PostProps> = ({ post, category = [], siteConfig}) => {
   return (
     <main className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
       <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12 lg:">
@@ -157,4 +156,4 @@ const Post: React.FC<PostProps> = ({ post, category = [], siteConfig}) => {
     </main>
   );
 };
-export default Post;
+export default BlogPost;

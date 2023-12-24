@@ -13,7 +13,7 @@ const Newsletter = () => {
     <div className="bg-[#2D2520] px-20 pb-20 w-full">
       <div className="text-[#9D8C81] lg:mx-40">
         <div className="flex flex-col lg:flex-row text-lg gap-8 py-5">
-          <div className="text font-sans font-extrabold">About WPBeginner<sup>®</sup></div>
+          <div className="text font-sans font-extrabold  mt-8 md:mt-12 lg:mt-0">About WPBeginner<sup>®</sup></div>
         </div>
         <div className="flex flex-col lg:flex-row gap-20">
           <div className="flex flex-col gap-6 basis-1/2">
@@ -33,20 +33,21 @@ const Newsletter = () => {
             <div className="flex flex-col gap-5 basis-2/3 ">
               <p className="hover:text-3">About Us</p>
               <p className="hover:text-3">Contact Us</p>
-              <p className="hover:text-3">About Us</p>
-              <p className="hover:text-3">About Us</p>
+              <p className="hover:text-3">Combat </p>
+              <p className="hover:text-3">Combat Art</p>
+              <p className="hover:text-3">Crown Reform</p>
             </div>
             <div className="flex flex-col gap-5 basis-2/3 ">
               <p className="hover:text-3">Smash Balloon</p>
-              <p className="hover:text-3">About Us</p>
+              <p className="hover:text-3">SEC Guidelines</p>
               <p className="hover:text-3">FTC Disclosure</p>
-              <p className="hover:text-3">About Us</p>
+              <p className="hover:text-3">Honeybell LLC</p>
             </div>
             <div className="flex flex-col gap-5 basis-2/3">
               <p className="hover:text-3">RafflePress</p>
-              <p className="hover:text-3">About Us</p>
+              <p className="hover:text-3">Grotes IN</p>
               <p className="hover:text-3">Growth Fund</p>
-              <p className="hover:text-3">About Us</p>
+              <p className="hover:text-3">Nap Iker</p>
             </div>
           </div>
         </div>

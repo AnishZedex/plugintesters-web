@@ -5,7 +5,6 @@ import { useEffect } from 'react'
 const FooterCopywrite = () => {
 
   useEffect(() => {
-
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const yearElement = document.getElementById('year') as HTMLSpanElement;

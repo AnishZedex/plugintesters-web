@@ -5,7 +5,7 @@ import { client } from "../../../sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import React from "react";
-import { PluginBlogs } from "../../../queries";
+import { PluginBlogs } from "../../store/queries";
 
 const builder = imageUrlBuilder(client);
 
@@ -51,12 +51,10 @@ function Card({ PluginCategory = [] }: { PluginCategory: SanityDocument[] }) {
             <Link  href={`blog/${pluginblogs.slug.current}`}>
                 <div className="font-bold line-clamp-2">
                   {pluginblogs.title}
-                  {/* {tutorialblogs.title.split(" ").slice(0, 1).join(" ")} */}
                 </div>
         </Link>
               </div>
               <div className="mt-5 line-clamp-3">
-                {/* {pluginblogs?.body ? <PortableText value={pluginblogs.body} components={ptComponents}/> : null} */}
                 {pluginblogs?.postDesc}
               </div>
           </div>

@@ -3,10 +3,10 @@ import SocialWidget from "@/components/SocialWidget";
 import { PortableText } from "@portabletext/react";
 import { SanityDocument } from "@sanity/client";
 import Link from "next/link";
-import lazyImage from "../../public/images/startablog.png";
+import lazyImage from "../../../public/images/startablog.png";
 import Image from "next/image";
-import { client } from "../../sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
+import { client } from "../../../sanity/lib/client";
 
 const builder = imageUrlBuilder(client);
 interface ImageProps {

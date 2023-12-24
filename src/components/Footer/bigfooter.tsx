@@ -43,8 +43,7 @@ const Footer = () => {
                     <li className='mb-3'>WP Simple Pay</li>
                     <li className='mb-3'>SearchWP</li>
                     <li className='mb-3'>WP Charitable</li>
-                    <li className='mb-3'>PushEngage</li>
-                    
+                    <li className='mb-3'>PushEngage</li>  
                 </ul>
             </div>
             

@@ -1,5 +1,5 @@
 import { cachedClient } from "../../sanity/lib/client"
-import { LatestPostsQuery, PluginBlogs, TutorialBlogs, catergoriesQuery, postsQuery, siteConfigQuery, trendingPostsQuery } from "../../queries"
+import { LatestPostsQuery, PluginBlogs, TutorialBlogs, catergoriesQuery, postsQuery, siteConfigQuery, trendingPostsQuery } from "../store/queries"
 import Navbar from "@/components/Navbar"
 import Searchbar from "@/components/Searchbar"
 import Blogs from "@/components/Blogs"
@@ -9,7 +9,6 @@ import Footersocial from "@/components/Footer/footersocial"
 import Newsletter from "@/components/Footer/Newsletter"
 import FooterCopywrite from "@/components/Footer"
 import TrendingCard from "@/components/TrendingCard"
-import siteConfig from "../../sanity/schemas/siteConfig"
 
 export async function generateMetadata(){ 
   const siteConfig = await cachedClient(siteConfigQuery)

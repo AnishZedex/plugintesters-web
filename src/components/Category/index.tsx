@@ -3,9 +3,9 @@ import SocialWidget from "@/components/SocialWidget";
 import { PortableText } from "@portabletext/react";
 import { SanityDocument } from "@sanity/client";
 import Link from "next/link";
-import lazyImage from "../../public/images/startablog.png";
+import lazyImage from "../../../public/images/startablog.png";
 import Image from "next/image";
-import { client } from "../../sanity/lib/client";
+import { client } from "../../../sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 
 const builder = imageUrlBuilder(client);
@@ -30,13 +30,13 @@ const ptComponents = {
   },
 };
 
-export default function Tag({ blogs = [], heading, siteConfig }: { blogs: SanityDocument[] , heading: string, siteConfig:SanityDocument}) {
+export default function Category({ blogs = [], siteConfig}: { blogs: SanityDocument[]; siteConfig:SanityDocument }) {
   return (
     <>
       <div className="overflow-hidden mx-auto pt-10 break-words lg:grid lg:gap-8 lg:grid-cols-[minmax(0,_1fr)_300px]">
         <div className="mb-4 bg-white py-10 px-6 md:px-8 lg:px-12 xl:px-14">
           <h1 className="text-gray-500 font-bold uppercase mb-8 text-lg">
-            {heading}
+            {blogs[0]?.category}
           </h1>
           {blogs.map((blog) => (
             <div key={blog._id} className="mb-8 pb-8 border-b">
